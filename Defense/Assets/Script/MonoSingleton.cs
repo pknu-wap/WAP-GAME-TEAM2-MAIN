@@ -13,7 +13,7 @@ public class MonoSingleton<T> : MonoBehaviour where T:  MonoBehaviour
                 var objArray = Resources.FindObjectsOfTypeAll(typeof(T));
                 if (objArray.Length > 0)
                 {
-                    Assert.IsTrue(objArray.Length >= 1, string.Format("{0} shoud be only one, but you are trying to make it more than one", typeof(T).ToString()));
+                    Assert.IsTrue(objArray.Length > 1, string.Format("{0} shoud be only one, but you are trying to make it more than one", typeof(T).ToString()));
                     instance = objArray[0] as T;
                 }
                 else
