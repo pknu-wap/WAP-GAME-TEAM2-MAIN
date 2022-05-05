@@ -20,4 +20,12 @@ public class EntityBaseInfo : ScriptableObject
     [Space]
     [SerializeField]
     private double healthPoint;
+
+    public GameObject EntityPrefab { get => entityPrefab; }
+    public double Damage { get => damage; }
+    public double Range { get => range;  }
+    public float PostAttackDelay { get => postAttackDelay; }
+    public float PreAttackDelay { get => preAttackDelay;  }
+    public double MovementSpeed { get => movementSpeed; }
+    public double HealthPoint { get => healthPoint;  }
 }
