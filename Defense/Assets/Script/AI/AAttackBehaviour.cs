@@ -17,10 +17,8 @@ public abstract class AAttackBehaviour : MonoBehaviour
     protected float postAttackDelay;
     protected float preAttackDelay;
 
-    public Coroutine AttackRoutine
-    {
-        private set; get;
-    }
+    private Coroutine AttackRoutine;
+
 
     public bool IsOnAttacking
     {
@@ -55,7 +53,6 @@ public abstract class AAttackBehaviour : MonoBehaviour
         Attack(target);
         yield return new WaitForSeconds(postAttackDelay);
         IsOnAttacking = false;
-
     }
 
     protected abstract void Attack(GameObject target);
