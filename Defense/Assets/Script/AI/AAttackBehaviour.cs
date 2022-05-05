@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public abstract class AArtificialAttack : MonoBehaviour
+public abstract class AAttackBehaviour : MonoBehaviour
 {
     [SerializeField]
     private double originDamage;
