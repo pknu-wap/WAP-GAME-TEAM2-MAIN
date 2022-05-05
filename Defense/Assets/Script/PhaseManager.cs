@@ -8,20 +8,20 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     public int Level { get; private set; }
     public bool IsStart { get; private set; }
 
-    [SerializeField] GameObject[] enemyPrefab;
+    [SerializeField] EntityBaseInfo[] enemyPrefab;
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
 
     private const int WAITING_TIME = 10;
     private float cntTime;
     private float remainTime;
-    private List<GameObject> enemyList;
+    private List<EntityBaseInfo> enemyList;
     void Start()
     {
         IsStart = false;
         Level = 0;
         cntTime = 0;
-        enemyList = new List<GameObject>();
+        enemyList = new List<EntityBaseInfo>();
         StartCoroutine(NextPhaseTimer());
     }
 
@@ -69,7 +69,7 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     private void SpawnEnemy()
     {
         int index = Random.Range(0, enemyPrefab.Length);
-        GameObject enemy = Instantiate(enemyPrefab[index]);
-        enemyList.Add(enemy);
+        EntityBaseInfo enemy = Instantiate<EntityBaseInfo>(enemyPrefab[index]);
+        if(enemy != null) enemyList.Add(enemy);
     }
 }
