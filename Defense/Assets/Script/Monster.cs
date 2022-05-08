@@ -11,8 +11,9 @@ public class Monster : MonoBehaviour
     public GameObject HealthBar; 
    public GameObject DamageText;
    public GameObject TextPos;
+   public GameObject mov;
 
-   public void GetDamage(int damage)
+   public void GetDamage(float damage)
    {
        GameObject dmgText = Instantiate(DamageText, TextPos.transform.position, Quaternion.identity);
        dmgText.GetComponent<Text>().text = damage.ToString();
@@ -33,5 +34,9 @@ public class Monster : MonoBehaviour
             GetDamage(other.GetComponent<Splash>().Damage);
         }
     }
+    private void AImove()
+    {
 
+        mov.GetComponent<ArtificalMovement>();
+    }
 }
