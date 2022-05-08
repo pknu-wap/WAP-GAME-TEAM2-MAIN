@@ -12,7 +12,7 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
 
-    private const int WAITING_TIME = 10;
+    private const int WAITING_TIME = 30;
     private float cntTime;
     private float remainTime;
     private List<EntityBaseInfo> enemyList;
@@ -25,7 +25,6 @@ public class PhaseManager : MonoSingleton<PhaseManager>
         StartCoroutine(NextPhaseTimer());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (cntTime >= WAITING_TIME && !IsStart) StartPhase();
