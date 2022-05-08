@@ -12,6 +12,7 @@ public class FieldManager : MonoSingleton<FieldManager>
 
     [SerializeField] Transform startPos; // 필드 시작 포지션
     [SerializeField] Transform endPos; // 필드 끝 포지션
+    //필드의 크기를 얻기위해 두 포지션을 씬에 배치해놨음
 
     public int[,] gridArray;
 
@@ -56,9 +57,10 @@ public class FieldManager : MonoSingleton<FieldManager>
             if ((90 < random && random <= 95) && cntBlue < MAXBLUE)//랜덤수가 90~95이면 블루존
             {
                 GameObject blueZone = Instantiate(blueZones, position + Vector3.up, Quaternion.identity);
-                blueZone.transform.localScale = new Vector3(cellSize, 1, cellSize);
+
+                blueZone.transform.localScale = new Vector3(cellSize, 1, cellSize); // cell Size만큼 크기를 키운다
                 cntBlue++;
-                return;
+                return; // 해당 함수 종료
             }
             else if ((95 < random && random <= 100) && cntRed < MAXRED)//랜덤수가 96~100이면 레드존
             {
@@ -74,6 +76,7 @@ public class FieldManager : MonoSingleton<FieldManager>
     }
     private void DrawLine(Vector3 position)
     {
+        //직사각형 모양으로 만들어주는 것
         Debug.DrawLine(new Vector3(position.x, 0, position.z), new Vector3(position.x + cellSize, 0, position.z), Color.yellow, 100f);
         Debug.DrawLine(new Vector3(position.x, 0, position.z), new Vector3(position.x, 0, position.z + cellSize), Color.yellow, 100f);
         Debug.DrawLine(new Vector3(position.x + cellSize, 0, position.z), new Vector3(position.x + cellSize, 0, position.z + cellSize), Color.yellow, 100f);
