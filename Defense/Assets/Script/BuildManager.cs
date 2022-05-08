@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoSingleton<PhaseManager>
+public class BuildManager : MonoSingleton<BuildManager>
 {
-   public static BuildManager instance;
    public GameObject SelectNode;
    public GameObject Tower;
-
-   public void Start()
-   {
-       instance = this;
-   }
 
    public void BuildToTower()
    {
