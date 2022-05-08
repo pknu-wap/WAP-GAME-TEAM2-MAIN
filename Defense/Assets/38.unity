@@ -632,17 +632,17 @@ PrefabInstance:
     - target: {fileID: 519122610919580469, guid: 1de92d380d09d8f448702553d3722adb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.9
+      value: 16.3
       objectReference: {fileID: 0}
     - target: {fileID: 519122610919580469, guid: 1de92d380d09d8f448702553d3722adb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.3
+      value: 17.4
       objectReference: {fileID: 0}
     - target: {fileID: 519122610919580469, guid: 1de92d380d09d8f448702553d3722adb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.7
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 519122610919580469, guid: 1de92d380d09d8f448702553d3722adb,
         type: 3}
@@ -767,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674184149377368985, guid: 11bc28f0a90504a4f80f8c39836cbcb7,
+        type: 3}
+      propertyPath: m_TagString
+      value: target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11bc28f0a90504a4f80f8c39836cbcb7, type: 3}

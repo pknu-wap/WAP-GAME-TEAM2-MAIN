@@ -15,8 +15,10 @@ public class AttackProjectile : AAttackBehaviour
 
     override protected void Attack(GameObject target)
     {
-         Rigidbody throwerclone = (Rigidbody) Instantiate(Throw, transform.position, Quaternion.identity);
-        throwerclone.AddForce(transform.position * 5000);
+         Rigidbody throwerclone = (Rigidbody) Instantiate(Throw, transform.position, transform.rotation);
+        Vector3 targetPos = target.transform.position - transform.position; 
+        transform.rotation = Quaternion.LookRotation(targetPos); 
+        throwerclone.AddForce(targetPos * 5000);
     
         Destroy(Throw, 1f);
     }
