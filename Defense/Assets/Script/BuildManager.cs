@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour
+public class BuildManager : MonoSingleton<PhaseManager>
 {
    public static BuildManager instance;
    public GameObject SelectNode;
