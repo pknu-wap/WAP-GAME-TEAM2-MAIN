@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoSingleton<Tower>
 {
     public int Damage;
     public float Range; //범위 설정
