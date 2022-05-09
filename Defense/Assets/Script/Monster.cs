@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : livingEntityInfo
+public class Monster : EntityBaseInfo
 {
     public float StartHealth;
     public float Health;
