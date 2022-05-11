@@ -23,7 +23,7 @@ public class Monster : EntityBaseInfo
 
        if(Health < 0)
        {
-           Destroy(gameObject);
+           //Destroy(gameObject);
        }
    }
 
