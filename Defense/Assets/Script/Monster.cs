@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : EntityBaseInfo
+public class Monster : MonoBehaviour
 {
+    public EntityBaseInfo entityBaseInfo;
     public float StartHealth;
     public float Health;
 
     public GameObject HealthBar; 
-   public GameObject DamageText;
-   public GameObject TextPos;
-   public GameObject mov;
+    public GameObject DamageText;
+    public GameObject TextPos;
+    public GameObject mov;
 
    public void GetDamage(float damage)
    {
@@ -23,7 +24,7 @@ public class Monster : EntityBaseInfo
 
        if(Health < 0)
        {
-           //Destroy(gameObject);
+           Destroy(gameObject);
        }
    }
 
