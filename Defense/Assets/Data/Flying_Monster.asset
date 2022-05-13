@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1d561d9d11b472f92b9af1a74ba29d, type: 3}
   m_Name: Flying_Monster
   m_EditorClassIdentifier: 
-  entityPrefab: {fileID: 0}
+  entityPrefab: {fileID: 1581548606196228, guid: 5af01b46a9dd1b746afcf9f3e182e3d3,
+    type: 3}
   damage: 0
   range: 0
   postAttackDelay: 0
