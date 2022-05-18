@@ -44,5 +44,7 @@ public class ArtificalMovement : MonoBehaviour
         navMeshAgent.velocity = Vector3.zero;
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(dest);
+
+        
     }
 }

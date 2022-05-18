@@ -5,12 +5,14 @@ using UnityEngine;
 public class Tower : MonoSingleton<Tower>
 {
     public int Damage;
+    public int down;
     public float Range; //범위 설정
     public GameObject Target;
     public Animator anim;
     public GameObject Splash;
     public GameObject Eff_obj;
     public GameObject Eff_pos;
+    public GameObject SpeedDown;
     public Transform PartToRotate;
     void Start()
     {
@@ -104,5 +106,16 @@ public class Tower : MonoSingleton<Tower>
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = lookRotation.eulerAngles;
         PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    void SlowTarget()
+    {
+        if (Target != null)
+        {
+            GameObject slow = Instantiate(SpeedDown, new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), Quaternion.identity);
+            Destroy(SpeedDown, 2f);
+            Target.GetComponent<Monster>().Getunderspeed(down);
+        }
+
     }
 }

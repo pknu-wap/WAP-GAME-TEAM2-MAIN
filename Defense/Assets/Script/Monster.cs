@@ -8,10 +8,17 @@ public class Monster : EntityBaseInfo
     public float StartHealth;
     public float Health;
 
+    public Transform Target;
+    public GameObject MoveSpeed;
+
+
+
+
     public GameObject HealthBar; 
    public GameObject DamageText;
    public GameObject TextPos;
    public GameObject mov;
+   public GameObject MakeSlow;
 
    public void GetDamage(float damage)
    {
@@ -21,10 +28,15 @@ public class Monster : EntityBaseInfo
        HealthBar.GetComponent<Image>().fillAmount = Health / StartHealth;
        Destroy(dmgText, 1f);
 
-       if(Health < 0)
-       {
-           Destroy(gameObject);
-       }
+       
+       
+   }
+
+   public void Getunderspeed(float down)
+   {
+        MoveSpeed.GetComponent<ArtificalMovement>();
+
+       
    }
 
     private void OnTriggerEnter(Collider other) 
