@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Monster : EntityBaseInfo
+public class Monster : MonoBehaviour
 {
+    public EntityBaseInfo entityBaseInfo;
     public float StartHealth;
     public float Health;
 
@@ -15,10 +16,16 @@ public class Monster : EntityBaseInfo
 
 
     public GameObject HealthBar; 
+<<<<<<< HEAD
    public GameObject DamageText;
    public GameObject TextPos;
    public GameObject mov;
    public GameObject MakeSlow;
+=======
+    public GameObject DamageText;
+    public GameObject TextPos;
+    public GameObject mov;
+>>>>>>> 2cb37740641365659c9b395783d53eaf41a645bf
 
    public void GetDamage(float damage)
    {
