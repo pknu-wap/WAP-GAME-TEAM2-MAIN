@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class Monster : MonoBehaviour
 {
     public EntityBaseInfo entityBaseInfo;
+    public ArtificalMovement MoveSpeed;
     public float StartHealth;
     public float Health;
 
     public Transform Target;
-    public GameObject MoveSpeed;
-
+    
+    
+    [SerializeField] float SSpeed = 0.3f;
 
 
 
@@ -41,8 +43,14 @@ public class Monster : MonoBehaviour
 
    public void Getunderspeed(float down)
    {
-        MoveSpeed.GetComponent<ArtificalMovement>();
+       
+       MoveSpeed = MakeSlow.GetComponent<ArtificalMovement>(); 
+       transform.Translate(MoveSpeed * SSpeed);  //Getunderspeed 발생시 몬스터 속도 줄임
 
+       Destroy(MoveSpeed, 2f);
+       
+       
+        
        
    }
 
