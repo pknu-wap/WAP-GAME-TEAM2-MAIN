@@ -18,16 +18,10 @@ public class Monster : MonoBehaviour
 
 
     public GameObject HealthBar; 
-<<<<<<< HEAD
    public GameObject DamageText;
    public GameObject TextPos;
    public GameObject mov;
    public GameObject MakeSlow;
-=======
-    public GameObject DamageText;
-    public GameObject TextPos;
-    public GameObject mov;
->>>>>>> 2cb37740641365659c9b395783d53eaf41a645bf
 
    public void GetDamage(float damage)
    {
@@ -45,7 +39,6 @@ public class Monster : MonoBehaviour
    {
        
        MoveSpeed = MakeSlow.GetComponent<ArtificalMovement>(); 
-       transform.Translate(MoveSpeed * SSpeed);  //Getunderspeed 발생시 몬스터 속도 줄임
 
        Destroy(MoveSpeed, 2f);
        

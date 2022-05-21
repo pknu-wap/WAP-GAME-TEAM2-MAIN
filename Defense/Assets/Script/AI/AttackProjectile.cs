@@ -20,12 +20,6 @@ public class AttackProjectile : AAttackBehaviour
 
         transform.rotation = Quaternion.LookRotation(targetPos); 
         throwerclone.AddForce(targetPos * 5000);
-<<<<<<< HEAD
-       
-=======
-        GetComponent<Tower>().UpdateTarget;
-    
->>>>>>> 2cb37740641365659c9b395783d53eaf41a645bf
         Destroy(Throw, 1f);
     }
  
