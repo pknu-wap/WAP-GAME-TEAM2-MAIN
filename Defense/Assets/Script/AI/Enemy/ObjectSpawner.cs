@@ -44,7 +44,7 @@ public class ObjectSpawner : MonoBehaviour
             var randomDirection = new Vector3(Random.Range(-1f, 1f), transform.position.y, Random.Range(-1f, 1f)).normalized;
             var randomDistance = Random.Range(0, maximumSpawnPointDistance);
 
-            var spawnPosition = randomDirection * randomDistance;
+            var spawnPosition = transform.position + randomDirection * randomDistance;
             if (Physics.CheckBox(spawnPosition, Vector3.one * collideCheckBoxHalfSize)) continue;
 
             position = spawnPosition;
