@@ -50,10 +50,8 @@ public class BuildManager : MonoSingleton<BuildManager>
     }
     private Vector3 GetGridPosition(Vector3 position)
     {
-       //int cellSize = FieldManager.Instance.cellSize;
-       /* FieldManger 인스턴스 참조 에러
-        * 임시로 CellSize = 4로 진행 */
-        Vector3 offset = new Vector3(position.x % 4, 0, position.z % 4);
+        int cellSize = FieldManager.Instance.cellSize;
+        Vector3 offset = new Vector3(position.x % cellSize, 0, position.z % cellSize);
 
         return position - offset;
     }
