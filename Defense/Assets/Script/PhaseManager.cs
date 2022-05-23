@@ -12,7 +12,7 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
 
-    private const int WAITING_TIME = 30;
+    private const int WAITING_TIME = 120;
     private float cntTime;
     private float remainTime;
     private List<EntityBaseInfo> enemyList;
