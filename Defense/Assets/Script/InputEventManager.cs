@@ -12,8 +12,11 @@ public class InputEventManager : MonoSingleton<InputEventManager>
 
     public bool AddTouchEvent(TouchEvent touchFunc)
     {
-        foreach(var delegateFunc in touchEvent.GetInvocationList())
-            if (delegateFunc.Equals(touchFunc)) return false;
+        if (touchEvent != null)
+        {
+            foreach (var delegateFunc in touchEvent.GetInvocationList())
+                if (delegateFunc.Equals(touchFunc)) return false;
+        }
 
         touchEvent += touchFunc;
         return true;
