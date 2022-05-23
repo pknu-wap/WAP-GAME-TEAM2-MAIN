@@ -15,13 +15,13 @@ public class FieldManager : MonoSingleton<FieldManager>
     //필드의 크기를 얻기위해 두 포지션을 씬에 배치해놨음
 
     public int[,] gridArray;
+    public int cellSize;
 
     private const int MAXBLUE = 3;
     private const int MAXRED = 3;
 
     private int width;
     private int height;
-    private float cellSize;
 
 
     private int cntBlue = 0;
@@ -35,7 +35,7 @@ public class FieldManager : MonoSingleton<FieldManager>
         gridArray = new int[width, height];
         CreateField(cellSize);
     }
-    private void CreateField(float cellSize)
+    private void CreateField(int cellSize)
     {
         for (int x = 0; x < gridArray.GetLength(0) / cellSize; x++)
         {
