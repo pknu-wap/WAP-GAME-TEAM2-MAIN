@@ -3,13 +3,9 @@ using UnityEngine;
 
 public abstract class AAttackBehaviour : MonoBehaviour
 {
-    [SerializeField]
     private double originDamage;
-    [SerializeField]
     private double originRange;
-    [SerializeField]
     private float originPostAttackDelay;
-    [SerializeField]
     private float originPreAttackDelay;
 
     protected double damage;
@@ -30,6 +26,14 @@ public abstract class AAttackBehaviour : MonoBehaviour
     public float OriginPostAttackDelay { get => originPostAttackDelay;  }
     public float OriginPreAttackDelay { get => originPreAttackDelay; }
 
+    public void Init(double damage, double range, float postAttackDelay, float preAttackDelay)
+    {
+        this.originDamage = damage;
+        this.originRange = range;
+        this.postAttackDelay = postAttackDelay;
+        this.preAttackDelay = preAttackDelay;
+        OnEnable();
+    }
 
     private void OnEnable()
     {
