@@ -15,11 +15,11 @@ public class ObjectSpawner : MonoBehaviour
     private float lastSpawnTime = 0f;
     private bool isPending = false;
 
-    public GameObject SpawnObject(GameObject prefab)
+    public GameObject SpawnObject(GameObject prefab,int collideLayer)
     {
         if (isPending) return null;
         Vector3 spawnPosition;
-        bool isSpawnable = GetAvailableSpawnPosition(out spawnPosition);
+        bool isSpawnable = GetAvailableSpawnPosition(out spawnPosition, collideLayer);
 
         if (!isSpawnable)
         {
@@ -36,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
         return spawnedObject;
     }
 
-    private bool GetAvailableSpawnPosition(out Vector3 position)
+    private bool GetAvailableSpawnPosition(out Vector3 position, int collideLayer)
     {
         for(int i = 0; i < maximumCollideCheckCount; i++)
         {
@@ -44,7 +44,7 @@ public class ObjectSpawner : MonoBehaviour
             var randomDistance = Random.Range(0, maximumSpawnPointDistance);
 
             var spawnPosition = transform.position + randomDirection * randomDistance;
-            if (Physics.CheckBox(spawnPosition, Vector3.one * collideCheckBoxHalfSize)) continue;
+            if (Physics.CheckBox(spawnPosition, Vector3.one * collideCheckBoxHalfSize,Quaternion.identity, collideLayer)) continue;
 
             position = spawnPosition;
             return true;

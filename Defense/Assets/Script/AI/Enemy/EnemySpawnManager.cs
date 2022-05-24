@@ -8,6 +8,8 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     private List<ObjectSpawner> spawnerList;
     [SerializeField]
     private List<EntityBaseInfo> entityInfoList;
+    [SerializeField]
+    private int enemyLayerMask = 15;
 
     [SerializeField]
     private int spawnerCountAtSpawnOrder;
@@ -58,7 +60,7 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
                 {
                     var prefabIndex = Random.Range(0, entityInfoList.Count);
                     var prefab = entityInfoList[prefabIndex].EntityPrefab;
-                    var spawnedObject = spawner.SpawnObject(prefab);
+                    var spawnedObject = spawner.SpawnObject(prefab, enemyLayerMask);
                     InitSpawnedObject(spawnedObject, entityInfoList[prefabIndex]);
                 }
             }
