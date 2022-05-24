@@ -5,11 +5,11 @@ using System.Collections.Generic;
 [RequireComponent(typeof(PooledObject))]
 public class EntityHealth : MonoBehaviour
 {
-    private int maxHealth;
-    private int currentHealth;
+    private double maxHealth;
+    private double currentHealth;
 
-    public int MaxHealth { get => maxHealth; }
-    public int CurrentHealth { get => currentHealth; }
+    public double MaxHealth { get => maxHealth; }
+    public double CurrentHealth { get => currentHealth; }
     public bool IsDead { get => currentHealth <= 0; }
 
     public delegate void OnDeath(GameObject deadObject);
@@ -29,7 +29,7 @@ public class EntityHealth : MonoBehaviour
         currentHealth = startHealth;
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(double damage)
     {
         currentHealth = currentHealth - damage > maxHealth ? maxHealth : currentHealth - damage;
         // TODO damage taking animation
