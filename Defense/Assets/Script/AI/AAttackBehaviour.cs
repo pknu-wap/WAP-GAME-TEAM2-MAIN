@@ -45,7 +45,7 @@ public abstract class AAttackBehaviour : MonoBehaviour
 
     public void OrderAttack(GameObject target)
     {
-        if (IsOnAttacking) return;
+        if (IsOnAttacking || (target.transform.position - transform.position).magnitude > range) return;
 
         AttackRoutine = StartCoroutine(AttackProcess(target));
     }

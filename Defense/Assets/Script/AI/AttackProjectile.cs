@@ -4,25 +4,19 @@ using UnityEngine;
 public class AttackProjectile : AAttackBehaviour
 {
 
-    private float FirePower;
     [SerializeField]
-    private GameObject ProjectilePrefab;
-    private Rigidbody Throw;
+    private GameObject projectilePrefab;
     [SerializeField]
-    public GameObject Target;
-    public Transform Pos;
+    private float projectileSpeedPerSec = 10f;
 
 
     override protected void Attack(GameObject target)
     {
-        Rigidbody throwerclone = (Rigidbody) Instantiate(Throw, transform.position, transform.rotation);
-        Vector3 targetPos = (target.transform.position - transform.position); 
+        transform.LookAt(target.transform.position);
 
-        transform.rotation = Quaternion.LookRotation(targetPos); 
-        throwerclone.AddForce(targetPos * 5000);
-        Destroy(Throw, 1f);
+        var projectile = ObjectPoolAdmin.Instance.GetPooledObject(projectilePrefab);
+        projectile.GetComponent<Projectile>().Init(projectileSpeedPerSec, damage, target.transform, gameObject.transform);
     }
- 
 }
 
 
