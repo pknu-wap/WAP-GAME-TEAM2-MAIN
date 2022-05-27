@@ -17,8 +17,9 @@ public class EntityHealth : MonoBehaviour
 
     public void AddEventOnDeath(OnDeath deathEvent)
     {
-        foreach (var func in onDeathEvent.GetInvocationList())
-            if (func.Equals(deathEvent)) return;
+        if(onDeathEvent != null)
+         foreach (var func in onDeathEvent.GetInvocationList())
+               if (func.Equals(deathEvent)) return;
 
         onDeathEvent += deathEvent;
     }
