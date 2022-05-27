@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPoolAdmin : MonoSingleton<ObjectPoolAdmin>
 {
     [SerializeField]
-    private List<GameObject> prefabList;
+    private List<GameObject> prefabList = new List<GameObject>();
     private Dictionary<GameObject, ObjectPool> poolDictionaryByPrefab= new Dictionary<GameObject, ObjectPool>();
 
     [ContextMenu("Init All Pool")]
