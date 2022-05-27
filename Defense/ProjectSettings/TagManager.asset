@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Monster
   - target
+  - Turret
+  - Grid
   layers:
   - Default
   - TransparentFX
