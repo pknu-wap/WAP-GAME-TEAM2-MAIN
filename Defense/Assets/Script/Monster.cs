@@ -9,7 +9,6 @@ public class Monster : MonoBehaviour
     public ArtificalMovement MoveSpeed;
     public float StartHealth;
     public float Health;
-
     public Transform Target;
     
     
@@ -18,10 +17,10 @@ public class Monster : MonoBehaviour
 
 
     public GameObject HealthBar; 
-   public GameObject DamageText;
-   public GameObject TextPos;
-   public GameObject mov;
-   public GameObject MakeSlow;
+    public GameObject DamageText;
+    public GameObject TextPos;
+    public GameObject mov;
+    public GameObject MakeSlow;
 
    public void GetDamage(float damage)
    {

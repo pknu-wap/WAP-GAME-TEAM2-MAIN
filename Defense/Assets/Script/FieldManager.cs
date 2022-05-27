@@ -70,7 +70,7 @@ public class FieldManager : MonoSingleton<FieldManager>
                 return;
             }
         }
-        GameObject cell = Instantiate(cells, position, Quaternion.identity);//기본 그리드
+        GameObject cell = Instantiate(cells, position + Vector3.up, Quaternion.identity);//기본 그리드
         cell.transform.localScale = new Vector3(cellSize, 1, cellSize);
         DrawLine(position);
     }
