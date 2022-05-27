@@ -58,6 +58,8 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
                 var spawner = spawnerList[i];
                 for(int j=0;j< spawnCount; j++)
                 {
+                    if (nullReferenceIndexAtObjectList.Count == 0) break;
+
                     var prefabIndex = Random.Range(0, entityInfoList.Count);
                     var prefab = entityInfoList[prefabIndex].EntityPrefab;
                     var spawnedObject = spawner.SpawnObject(prefab, enemyLayerMask);
