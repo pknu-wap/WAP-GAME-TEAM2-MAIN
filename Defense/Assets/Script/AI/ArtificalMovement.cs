@@ -28,7 +28,11 @@ public class ArtificalMovement : MonoBehaviour
         currentMoveSpeed = originMoveSpeed;
         navMeshAgent.autoBraking = true;
     }
-
+    public void Init(float speed)
+    {
+        originMoveSpeed = speed;
+        currentMoveSpeed = speed;
+    }
     public void InitSpeed()
     {
         currentMoveSpeed = originMoveSpeed;

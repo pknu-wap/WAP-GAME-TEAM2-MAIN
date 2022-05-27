@@ -19,16 +19,16 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (isPending) return null;
         Vector3 spawnPosition;
-        bool isSpawnable = GetAvailableSpawnPosition(out spawnPosition, collideLayer);
+        //bool isSpawnable = GetAvailableSpawnPosition(out spawnPosition, collideLayer);
 
-        if (!isSpawnable)
-        {
-            StartCoroutine(PendForRecheckSpawn());
-            return null;
-        }
+        //if (!isSpawnable)
+        //{
+        //    StartCoroutine(PendForRecheckSpawn());
+        //    return null;
+        //}
 
         var spawnedObject = ObjectPoolAdmin.Instance.GetPooledObject(prefab);
-        spawnedObject.transform.position = spawnPosition;
+        spawnedObject.transform.position = transform.position;
         spawnedObject.SetActive(true);
         spawnedObject.transform.SetParent(transform);
         lastSpawnTime = Time.time;

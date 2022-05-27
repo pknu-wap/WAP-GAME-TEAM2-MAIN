@@ -29,7 +29,7 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     public IReadOnlyList<GameObject> SpawnObjectList { get => spawnedObjectList.AsReadOnly(); }
 
     // TODO: determine is on work or not form PhaseManager
-    private bool IsWorkable { get => true; }
+    private bool IsWorkable { get => PhaseManager.Instance.IsStart; }
 
     private void OnEnable()
     {
