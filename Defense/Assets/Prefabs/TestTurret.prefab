@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 691422899671171365}
+  - component: {fileID: 2283272992697319754}
+  - component: {fileID: 7346388678413774604}
+  - component: {fileID: 4911991934549924830}
+  - component: {fileID: 5118533091171011800}
   m_Layer: 0
   m_Name: TestTurret
   m_TagString: Untagged
@@ -31,6 +35,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2283272992697319754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934164448537024460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c2088d9ecf0654b8e20743642af4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileSpeedPerSec: 10
+--- !u!114 &7346388678413774604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934164448537024460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3926aea8daf064b308022416e6081f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4911991934549924830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934164448537024460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0a2cbf129bd4d778206c5a40304170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5118533091171011800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934164448537024460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4092b8d87a4b32b488353d1b46a814da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySearchingTerm: 0
 --- !u!1 &8383431764281703668
 GameObject:
   m_ObjectHideFlags: 0
