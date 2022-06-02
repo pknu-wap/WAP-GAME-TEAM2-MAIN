@@ -4,37 +4,40 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    MeshRenderer mesh;
-    public bool buildable;
-    [SerializeField] Material buildable_Cell;
-    [SerializeField] Material notBuildable_Cell;
-    [SerializeField] Material default_Cell;
+    private Color cellOrigin;
+    private MeshRenderer mesh;
+    private VirtualEntity turret;
+    public enum State
+    {
+        DEFAULT,BUILDABLE, UNBUILDABLE, INSTALLED
+    }
+    public State CellState;
     private void Start()
     {
+        CellState = State.BUILDABLE;
         mesh = GetComponent<MeshRenderer>();
-        buildable = true;
+        cellOrigin = mesh.material.color;
     }
-   /* private void OnTriggerEnter(Collider other)
+    public void UpdateCellColor(State state)
     {
-        if (!BuildManager.Instance.IsTouch) return;
-
-        if(other.tag == "Turret")
+        Color color = GetComponent<MeshRenderer>().material.color;
+        switch (state)
         {
-            Color color = mesh.material.color;
-            color = Color.yellow;
-            color.a = 0.3f;
-            mesh.material.color = color;
+            case State.BUILDABLE:
+                color = Color.yellow;
+                color.a = 0.4f;
+                break;
+            case State.UNBUILDABLE:
+                color = Color.red;
+                color.a = 0.4f;
+                break;
+            case State.INSTALLED:
+                color = cellOrigin;
+                break;
+            case State.DEFAULT:
+                color = cellOrigin;
+                break;
         }
+        GetComponent<MeshRenderer>().material.color = color;
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (!BuildManager.Instance.IsTouch) return;
-
-        if (other.tag == "Turret")
-        {
-            Color color = mesh.material.color;
-            color.a = 0f;
-            mesh.material.color = color;
-        }
-    }*/
 }

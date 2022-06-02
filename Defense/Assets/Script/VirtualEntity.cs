@@ -4,52 +4,74 @@ using UnityEngine;
 
 public class VirtualEntity : MonoBehaviour
 {
-    private Color cellOrigin;
-    enum CellState
+    private MeshRenderer mesh;
+    public bool isFixed;
+    private void Start()
     {
-        BUILDABLE,UNBUILDABLE,EXIT
+        isFixed = false;
+        mesh = GetComponent<MeshRenderer>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!BuildManager.Instance.IsTouch) return;
+        Cell cell = other.GetComponent<Cell>();
+        if (cell != null)
+        {
+            switch (cell.CellState)
+            {
+                case Cell.State.BUILDABLE:
+                    cell.UpdateCellColor(Cell.State.BUILDABLE);
+                    break;
+                case Cell.State.UNBUILDABLE:
+                    cell.UpdateCellColor(Cell.State.UNBUILDABLE);
+                    break;
+            }
 
-        CheckBuildable(other);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (!BuildManager.Instance.IsTouch) return;
-
         Cell cell = other.GetComponent<Cell>();
-        if (cell != null) ChangeState(cell.gameObject, CellState.EXIT);
-    }
-    private void CheckBuildable(Collider hit)
-    {
-        Cell cell = hit.GetComponent<Cell>();
         if (cell != null)
         {
-            cellOrigin = cell.GetComponent<MeshRenderer>().material.color;
-            if (cell.buildable) ChangeState(cell.gameObject, CellState.BUILDABLE);
-            else ChangeState(cell.gameObject,CellState.UNBUILDABLE);
+            cell.UpdateCellColor(Cell.State.DEFAULT);
         }
     }
-    private void ChangeState(GameObject target, CellState state)
+    private void OnTriggerStay(Collider other)
     {
-        Color color = target.GetComponent<MeshRenderer>().material.color;
-        switch (state)
-        {
-            case CellState.BUILDABLE:
-                color = Color.yellow;
-                color.a = 0.4f;
-                break;
-            case CellState.UNBUILDABLE:
-                color = Color.red;
-                color.a = 0.4f;
-                break;
-            case CellState.EXIT:
-                color = cellOrigin;
-                break;
+        if (!isFixed) return;
+
+        Cell cell = other.GetComponent<Cell>();
+        if (cell != null) {
+            if(cell.CellState == Cell.State.BUILDABLE)
+            {
+                cell.CellState = Cell.State.UNBUILDABLE;
+                Destroy(this);
+                FieldManager.Instance.towerList.Add(gameObject);
+            }
+            else Destroy(gameObject);
+        cell.UpdateCellColor(Cell.State.DEFAULT);
         }
-        target.GetComponent<MeshRenderer>().material.color = color;
+    }
+    public void SetTurret()
+    {
+        Color color = GetComponent<MeshRenderer>().material.color;
+        color.a = 1f;
+        //tower.GetComponent<Tower>().enabled = true;
+        //tower.GetComponent<EntityHealth>().enabled = true;
+        //tower.GetComponent<AttackProjectile>().enabled = true;
+        GetComponent<Collider>().isTrigger = false;
+        GetComponent<MeshRenderer>().material.color = color;
+    }
+    public void SetVirtualTurret()
+    {
+        Color color = GetComponent<MeshRenderer>().material.color;
+        color.a = 0.4f;
+        //tower.GetComponent<Tower>().enabled = false;
+        //tower.GetComponent<EntityHealth>().enabled = false;
+        //tower.GetComponent<AttackProjectile>().enabled = false;
+        GetComponent<Collider>().isTrigger = true;
+        GetComponent<MeshRenderer>().material.color = color;
     }
 }

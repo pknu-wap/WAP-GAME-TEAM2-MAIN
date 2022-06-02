@@ -5,21 +5,19 @@ using UnityEngine;
 public class BuildManager : MonoSingleton<BuildManager>
 {
     public GameObject selectNode;
-    public GameObject tower;
-    [SerializeField] GameObject towerPrefabs;
-  
-    public bool IsTouch { get; private set; }
+    private VirtualEntity tower;
+    [SerializeField] VirtualEntity towerPrefabs;
 
-
-
+    public bool IsTouch { get; private set; } = false;
 
     private void Update()
     {
         InputEventManager.Instance.AddTouchEvent(SelectTurret);
     }
-    public void BuildToTower(GameObject target)
+    public void BuildToTower(Touch touch)
     {
-       Instantiate(tower, selectNode.transform.position, Quaternion.identity);//생성할 오브젝트, 생성될 위치, 각도
+        tower = Instantiate<VirtualEntity>(towerPrefabs, GetWorldPosition(touch.position), Quaternion.identity);
+        tower.SetVirtualTurret();
     }
 
     private void SelectTurret(Touch touch)
@@ -33,11 +31,11 @@ public class BuildManager : MonoSingleton<BuildManager>
                 ray = Camera.main.ScreenPointToRay(touch.position);
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    if (hit.collider.tag == "Turret")
+                    tower = hit.collider.GetComponent<VirtualEntity>();
+                    if (tower != null)
                     {
-                        tower = Instantiate(towerPrefabs, GetWorldPosition(touch.position), Quaternion.identity);
-                        SetTurret(false);
-                        
+                        if (tower.isFixed) return;
+                        BuildToTower(touch);
                     }
                 }
                 break;
@@ -48,35 +46,13 @@ public class BuildManager : MonoSingleton<BuildManager>
                 break;
             case TouchPhase.Ended:
                 IsTouch = false;
-                SetTurret(true);
+                if (tower == null) return;
+                tower.isFixed = true;
+                tower.SetTurret();
+                tower = null;
                 break;
 
         }
-    }
-    private void SetTurret(bool isBuild)
-    {
-        Color color = tower.GetComponent<MeshRenderer>().material.color;
-        if (isBuild)
-        {
-            color.a = 1f;
-            tower.GetComponent<Tower>().enabled = true;
-            tower.GetComponent<EntityHealth>().enabled = true;
-            tower.GetComponent<AttackProjectile>().enabled = true;
-            tower.GetComponent<VirtualEntity>().enabled = false;
-            tower.GetComponent<Collider>().isTrigger = false;
-
-            FieldManager.Instance.towerList.Add(tower);
-        }
-        else
-        {
-            color.a = 0.4f;
-            tower.GetComponent<Tower>().enabled = false;
-            tower.GetComponent<EntityHealth>().enabled = false;
-            tower.GetComponent<AttackProjectile>().enabled = false;
-            tower.GetComponent<VirtualEntity>().enabled = true;
-            tower.GetComponent<Collider>().isTrigger = true;
-        }
-        tower.GetComponent<MeshRenderer>().material.color = color;
     }
     private Vector3 GetWorldPosition(Vector2 touch)
     {
@@ -90,7 +66,7 @@ public class BuildManager : MonoSingleton<BuildManager>
     private Vector3 GetGridPosition(Vector3 position)
     {
         int cellSize = FieldManager.Instance.cellSize;
-        Vector3 offset = new Vector3(position.x % cellSize, -2, position.z % cellSize);
+        Vector3 offset = new Vector3(position.x % cellSize, 0, position.z % cellSize);
 
         return position - offset;
     }
