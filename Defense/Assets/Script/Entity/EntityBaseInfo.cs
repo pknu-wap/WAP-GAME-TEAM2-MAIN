@@ -18,9 +18,9 @@ public class EntityBaseInfo : ScriptableObject
     [SerializeField]
     private float preAttackDelay;
     [SerializeField]
-    private double movementSpeed;
+    private float movementSpeed;
     [SerializeField]
-    private double healthPoint;
+    private int healthPoint;
     [Space]
     [SerializeField]
     private EntityUpgradeInfo upgradeInfo;
@@ -31,8 +31,8 @@ public class EntityBaseInfo : ScriptableObject
     public double Range { get => range;  }
     public float PostAttackDelay { get => postAttackDelay; }
     public float PreAttackDelay { get => preAttackDelay;  }
-    public double MovementSpeed { get => movementSpeed; }
-    public double HealthPoint { get => healthPoint;  }
+    public float MovementSpeed { get => movementSpeed; }
+    public int HealthPoint { get => healthPoint;  }
     public EntityUpgradeInfo UpgradeInfo { get => upgradeInfo; }
 }
 

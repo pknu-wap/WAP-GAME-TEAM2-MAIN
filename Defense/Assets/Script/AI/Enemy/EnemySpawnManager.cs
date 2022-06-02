@@ -72,7 +72,14 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
 
     private void InitSpawnedObject(GameObject obj, EntityBaseInfo entityInfo)
     {
-        // TODO : damage , health, speed, death event
+        // TODO : death event
+        var entityHealth = obj.GetComponent<EntityHealth>();
+        entityHealth.Init(entityInfo.HealthPoint, entityInfo.HealthPoint);
+        var attackComponent = obj.GetComponent<AAttackBehaviour>();
+        attackComponent.Init(entityInfo.Damage, entityInfo.Range, entityInfo.PreAttackDelay, entityInfo.PostAttackDelay);
+        var moveComponent = obj.GetComponent<ArtificalMovement>();
+        moveComponent.Init(entityInfo.MovementSpeed);
+
         var index = nullReferenceIndexAtObjectList.Dequeue();
         indexPerSpawnGameObject.Add(obj, index);
         spawnedObjectList[index] = obj;
