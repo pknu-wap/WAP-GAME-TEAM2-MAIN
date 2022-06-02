@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FieldManager : MonoSingleton<FieldManager>
 {
-    // Start is called before the first frame update
+    public List<GameObject> towerList = new List<GameObject>();
 
     [SerializeField] GameObject cells;//기본 셀 프리팹
     [SerializeField] GameObject blueZones;//블루존 프리팹
