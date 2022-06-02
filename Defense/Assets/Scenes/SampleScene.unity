@@ -479,9 +479,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectNode: {fileID: 0}
   tower: {fileID: 0}
-  buildable_Cell: {fileID: 2100000, guid: 6459cacbd05c1dc4c9de8bc9b863fdef, type: 2}
-  notBuildable_Cell: {fileID: 2100000, guid: 66c2341c9f885904e9a1f3deea8147e0, type: 2}
-  default_Cell: {fileID: 2100000, guid: 8b922724f542f7b4390406c6b80a5180, type: 2}
+  buildable_Cell: {fileID: 0}
+  notBuildable_Cell: {fileID: 0}
+  default_Cell: {fileID: 0}
 --- !u!4 &911062072
 Transform:
   m_ObjectHideFlags: 0

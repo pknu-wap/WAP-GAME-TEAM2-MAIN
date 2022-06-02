@@ -14,4 +14,27 @@ public class Cell : MonoBehaviour
         mesh = GetComponent<MeshRenderer>();
         buildable = true;
     }
+   /* private void OnTriggerEnter(Collider other)
+    {
+        if (!BuildManager.Instance.IsTouch) return;
+
+        if(other.tag == "Turret")
+        {
+            Color color = mesh.material.color;
+            color = Color.yellow;
+            color.a = 0.3f;
+            mesh.material.color = color;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!BuildManager.Instance.IsTouch) return;
+
+        if (other.tag == "Turret")
+        {
+            Color color = mesh.material.color;
+            color.a = 0f;
+            mesh.material.color = color;
+        }
+    }*/
 }
