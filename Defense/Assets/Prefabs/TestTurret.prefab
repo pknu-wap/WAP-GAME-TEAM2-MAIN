@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7346388678413774604}
   - component: {fileID: 4911991934549924830}
   - component: {fileID: 5118533091171011800}
+  - component: {fileID: 5488061088734213412}
   m_Layer: 0
   m_Name: TestTurret
   m_TagString: Untagged
@@ -86,6 +87,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySearchingTerm: 0
+--- !u!114 &5488061088734213412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934164448537024460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d373b0486109df84eba1515812d097b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFixed: 0
 --- !u!1 &8383431764281703668
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +112,6 @@ GameObject:
   - component: {fileID: 3827702659345082882}
   - component: {fileID: 3955727879979998263}
   - component: {fileID: 3086415757548100965}
-  - component: {fileID: 8878335582869518885}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -146,7 +159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3720c08eb105337418e48f63a0156f92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,15 +193,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8878335582869518885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8383431764281703668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3b96108d97d4843b7bef82da3c359b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
