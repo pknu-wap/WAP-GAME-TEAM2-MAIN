@@ -26,14 +26,23 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     private Dictionary<GameObject, int> indexPerSpawnGameObject;
     private Queue<int> nullReferenceIndexAtObjectList;
 
-    public IReadOnlyList<GameObject> SpawnObjectList { get => spawnedObjectList.AsReadOnly(); }
+    public IReadOnlyList<GameObject> SpawnObjectList
+    {
+        get
+        {
+            if(spawnedObjectList == null)
+                spawnedObjectList = new List<GameObject>(maximumSpawnableObjectCount);
+            return spawnedObjectList.AsReadOnly();
+        }
+    }
 
     // TODO: determine is on work or not form PhaseManager
     private bool IsWorkable { get => PhaseManager.Instance.IsStart; }
 
     private void OnEnable()
     {
-        spawnedObjectList = new List<GameObject>(maximumSpawnableObjectCount);
+        if(spawnedObjectList == null)
+            spawnedObjectList = new List<GameObject>(maximumSpawnableObjectCount);
         indexPerSpawnGameObject = new Dictionary<GameObject, int>(maximumSpawnableObjectCount);
         nullReferenceIndexAtObjectList = new Queue<int>(maximumSpawnableObjectCount);
 
