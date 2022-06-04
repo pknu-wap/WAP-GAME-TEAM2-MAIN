@@ -9,11 +9,6 @@ public class BuildManager : MonoSingleton<BuildManager>
     [SerializeField] VirtualEntity[] towerPrefabs;
 
     public bool IsTouch { get; private set; } = false;
-
-    private void Update()
-    {
-       //InputEventManager.Instance.AddTouchEvent(SelectTurret);
-    }
     public void BuildToTower()
     {
         IsTouch = false;
@@ -30,38 +25,6 @@ public class BuildManager : MonoSingleton<BuildManager>
         Touch touch = Input.GetTouch(0);
         tower = Instantiate<VirtualEntity>(towerPrefabs[turretNum], GetWorldPosition(touch.position), Quaternion.identity);
         tower.SetVirtualTurret();
-        Debug.Log("생성됨");
-        /*Ray ray;
-        RaycastHit hit;
-        switch (touch.phase)
-        {
-            case TouchPhase.Began:
-                IsTouch = true;
-                ray = Camera.main.ScreenPointToRay(touch.position);
-                if (Physics.Raycast(ray, out hit, 100f))
-                {
-                    tower = hit.collider.GetComponent<VirtualEntity>();
-                    if (tower != null)
-                    {
-                        if (tower.isFixed) return;
-                        BuildToTower(touch);
-                    }
-                }
-                break;
-            case TouchPhase.Stationary:
-            case TouchPhase.Moved:
-                if (tower == null) return;
-                tower.transform.position = GetWorldPosition(touch.position);
-                break;
-            case TouchPhase.Ended:
-                IsTouch = false;
-                if (tower == null) return;
-                tower.isFixed = true;
-                tower.SetTurret();
-                tower = null;
-                break;
-
-        }*/
     }
     public Vector3 GetWorldPosition(Vector2 touch)
     {
