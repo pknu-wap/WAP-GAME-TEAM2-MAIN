@@ -28,7 +28,7 @@ public class Tower : MonoBehaviour
             for (int i = 0; i < enemyList.Count; i++)
                 if (enemyList[i] != null) distanceQueue.Enqueue(enemyList[i].transform);
 
-            attackBehaviour.OrderAttack(distanceQueue.Dequeue().gameObject);
+            if(distanceQueue.Count > 0) attackBehaviour.OrderAttack(distanceQueue.Dequeue().gameObject);
             yield return searchingTerm;
         }
     }
