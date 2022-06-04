@@ -9,6 +9,16 @@ public class VirtualEntity : MonoBehaviour
     {
         isFixed = false;
     }
+    private void Update()
+    {
+        if (!BuildManager.Instance.IsTouch || isFixed) return;
+        InputEventManager.Instance.AddTouchEvent(MoveToTouch);
+        
+    }
+    private void MoveToTouch(Touch touch)
+    {
+        transform.position = BuildManager.Instance.GetWorldPosition(touch.position);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!BuildManager.Instance.IsTouch) return;
@@ -45,8 +55,8 @@ public class VirtualEntity : MonoBehaviour
             if(cell.CellState == Cell.State.BUILDABLE)
             {
                 cell.CellState = Cell.State.UNBUILDABLE;
+                InputEventManager.Instance.RemoveTouchEvent(MoveToTouch);
                 Destroy(this);
-                FieldManager.Instance.towerList.Add(gameObject);
             }
             else Destroy(gameObject);
         cell.UpdateCellColor(Cell.State.DEFAULT);

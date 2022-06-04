@@ -6,23 +6,32 @@ public class BuildManager : MonoSingleton<BuildManager>
 {
     public GameObject selectNode;
     private VirtualEntity tower;
-    [SerializeField] VirtualEntity towerPrefabs;
+    [SerializeField] VirtualEntity[] towerPrefabs;
 
     public bool IsTouch { get; private set; } = false;
 
     private void Update()
     {
-        InputEventManager.Instance.AddTouchEvent(SelectTurret);
+       //InputEventManager.Instance.AddTouchEvent(SelectTurret);
     }
-    public void BuildToTower(Touch touch)
+    public void BuildToTower()
     {
-        tower = Instantiate<VirtualEntity>(towerPrefabs, GetWorldPosition(touch.position), Quaternion.identity);
-        tower.SetVirtualTurret();
+        IsTouch = false;
+        if (tower == null) return;
+        tower.isFixed = true;
+        tower.SetTurret();
+        FieldManager.Instance.towerList.Add(tower.gameObject);
+        tower = null;
     }
 
-    private void SelectTurret(Touch touch)
+    public void SelectTurret(int turretNum)
     {
-        Ray ray;
+        IsTouch = true;
+        Touch touch = Input.GetTouch(0);
+        tower = Instantiate<VirtualEntity>(towerPrefabs[turretNum], GetWorldPosition(touch.position), Quaternion.identity);
+        tower.SetVirtualTurret();
+        Debug.Log("생성됨");
+        /*Ray ray;
         RaycastHit hit;
         switch (touch.phase)
         {
@@ -52,9 +61,9 @@ public class BuildManager : MonoSingleton<BuildManager>
                 tower = null;
                 break;
 
-        }
+        }*/
     }
-    private Vector3 GetWorldPosition(Vector2 touch)
+    public Vector3 GetWorldPosition(Vector2 touch)
     {
         float m_ZCoord = Camera.main.WorldToScreenPoint(transform.position).z;
         Vector3 touchPos = new Vector3(touch.x, touch.y, m_ZCoord);
@@ -66,7 +75,7 @@ public class BuildManager : MonoSingleton<BuildManager>
     private Vector3 GetGridPosition(Vector3 position)
     {
         int cellSize = FieldManager.Instance.cellSize;
-        Vector3 offset = new Vector3(position.x % cellSize, 0, position.z % cellSize);
+        Vector3 offset = new Vector3(position.x % cellSize, -2, position.z % cellSize);
 
         return position - offset;
     }
