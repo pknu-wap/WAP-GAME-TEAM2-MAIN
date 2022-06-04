@@ -29,7 +29,7 @@ public class InputEventManager : MonoSingleton<InputEventManager>
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && touchEvent != null)
             touchEvent(Input.GetTouch(0));
     }
 }
