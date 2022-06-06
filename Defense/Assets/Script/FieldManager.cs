@@ -41,8 +41,8 @@ public class FieldManager : MonoSingleton<FieldManager>
         {
             for (int z = 0; z < gridArray.GetLength(1) / cellSize; z++)
             {
-                Vector3 position = GetWorldPosition(x, z);
-                CreateCell(position);
+                Vector3 position = new Vector3(x, 0, z) * cellSize;
+                CreateCell(FieldManager.Instance.GetGridPosition(position));
             }
         }
     }
@@ -54,25 +54,25 @@ public class FieldManager : MonoSingleton<FieldManager>
             //*****if문에 조건을 추가해 맵 중앙 지켜야될 구조물에 겹쳐서 생기지 않게 한다.
 
             int random = Random.Range(0, 300);//1~300범위의 랜덤수 
-            if ((90 < random && random <= 95) && cntBlue < MAXBLUE)//랜덤수가 90~95이면 블루존
+            Vector3 pos = new Vector3(position.x, cellSize, position.z);
+            if ((90 < random && random <= 95) && cntBlue < MAXBLUE)
             {
-                GameObject blueZone = Instantiate(blueZones, position + Vector3.up, Quaternion.identity);
-
-                blueZone.transform.localScale = new Vector3(cellSize, 1, cellSize); // cell Size만큼 크기를 키운다
+                GameObject blueZone = Instantiate(blueZones, pos, Quaternion.identity);
+                blueZone.transform.localScale *= cellSize;
                 cntBlue++;
-                return; // 해당 함수 종료
+                return;
             }
-            else if ((95 < random && random <= 100) && cntRed < MAXRED)//랜덤수가 96~100이면 레드존
+            else if ((95 < random && random <= 100) && cntRed < MAXRED)
             {
-                GameObject redZone = Instantiate(redZones, position + Vector3.up, Quaternion.identity);
-                redZone.transform.localScale = new Vector3(cellSize, 1, cellSize);
+                GameObject redZone = Instantiate(redZones, pos, Quaternion.identity);
+                redZone.transform.localScale *= cellSize;
                 cntRed++;
                 return;
             }
-        }
-        GameObject cell = Instantiate(cells, position + Vector3.up, Quaternion.identity);//기본 그리드
-        cell.transform.localScale = new Vector3(cellSize, 1, cellSize);
+        GameObject cell = Instantiate(cells, pos, Quaternion.identity) ;//기본 그리드
+        cell.transform.localScale *= cellSize ;
         DrawLine(position);
+        }
     }
     private void DrawLine(Vector3 position)
     {
@@ -82,7 +82,23 @@ public class FieldManager : MonoSingleton<FieldManager>
         Debug.DrawLine(new Vector3(position.x + cellSize, 0, position.z), new Vector3(position.x + cellSize, 0, position.z + cellSize), Color.yellow, 100f);
         Debug.DrawLine(new Vector3(position.x, 0, position.z + cellSize), new Vector3(position.x + cellSize, 0, position.z + cellSize), Color.yellow, 100f);
     }
-    private Vector3 GetWorldPosition(int x, int z)
+    public Vector3 GetWorldPosition(Vector2 touch)
+    {
+        float m_ZCoord = Camera.main.WorldToScreenPoint(transform.position).z;
+        Vector3 touchPos = new Vector3(touch.x, touch.y, m_ZCoord);
+
+        touchPos = Camera.main.ScreenToWorldPoint(touchPos) - startPos.position;
+        touchPos.y = 0;
+        return GetGridPosition(touchPos);
+    }
+    private Vector3 GetGridPosition(Vector3 position)
+    {
+        int gridX = (int)(position.x / cellSize) * cellSize;
+        int gridZ = (int)(position.z / cellSize) * cellSize;
+
+        return new Vector3(gridX, 1, gridZ) + startPos.position;
+    }
+    private Vector3 GetCellPosition(int x, int z)
     {
         return startPos.position + new Vector3(x, 0, z) * cellSize;
     }

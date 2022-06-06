@@ -9,13 +9,11 @@ public class TestTurret : MonoSingleton<TestTurret>
     private GameObject testTR;//포탑
     public GameObject testturret;//포탑
     private float cellSize;
-    // Start is called before the first frame update
     void Start()
     {
         cellSize = 4;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
