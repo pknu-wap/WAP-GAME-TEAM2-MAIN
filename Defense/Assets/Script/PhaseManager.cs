@@ -7,10 +7,13 @@ public class PhaseManager : MonoSingleton<PhaseManager>
 {
     public int Level { get; private set; }
     public bool IsStart { get; private set; }
+    public int Money { get; private set; }
 
     [SerializeField] EntityBaseInfo[] enemyPrefab;
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
+    [SerializeField] Text levelText;
+    [SerializeField] Text moneyText;
 
     private const int WAITING_TIME = 120;
     private float cntTime;
@@ -22,6 +25,7 @@ public class PhaseManager : MonoSingleton<PhaseManager>
         Level = 0;
         cntTime = 0;
         enemyList = new List<EntityBaseInfo>();
+        UpdateLevelText(Level);
         StartCoroutine(NextPhaseTimer());
     }
 
@@ -36,13 +40,13 @@ public class PhaseManager : MonoSingleton<PhaseManager>
         IsStart = true;
         remainTimeText.enabled = false;
         readyButton.gameObject.SetActive(false);
-        Level++;
+        UpdateLevelText(++Level);
         int enemyNum = Mathf.RoundToInt(Level * 3.5f);
-
         for (int i = 0; i < enemyNum; i++)
         {
             SpawnEnemy();
         }
+
     }
     private void EndPhase()
     {
@@ -69,6 +73,21 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     {
         int index = Random.Range(0, enemyPrefab.Length);
         EntityBaseInfo enemy = Instantiate<EntityBaseInfo>(enemyPrefab[index]);
-        if(enemy != null) enemyList.Add(enemy);
+        if (enemy != null)
+        {
+            enemyList.Add(enemy);
+        }
+    }
+
+    private void UpdateLevelText(int level)
+    {
+        Level = level;
+        levelText.text = "Level\n" + Level;
+
+    }
+    public void UpdateMoneyText(int money)
+    {
+        Money += money;
+        moneyText.text = "Money\n" + Money;
     }
 }
