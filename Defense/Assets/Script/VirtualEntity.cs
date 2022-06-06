@@ -17,7 +17,10 @@ public class VirtualEntity : MonoBehaviour
     }
     private void MoveToTouch(Touch touch)
     {
-        transform.position = BuildManager.Instance.GetWorldPosition(touch.position);
+        Vector3 position = FieldManager.Instance.GetWorldPosition(touch.position);
+
+        position.y = GetComponentInChildren<BoxCollider>().size.y;
+        transform.position = position;
     }
     private void OnTriggerEnter(Collider other)
     {
