@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 8460884758712178831, guid: ad2e10ec1b00e3c498e95190f6249622,
     type: 3}
-  damage: 0
-  range: 0
-  postAttackDelay: 0
+  damage: 10
+  range: 1
+  postAttackDelay: 1
   preAttackDelay: 0
-  movementSpeed: 0
-  healthPoint: 0
+  movementSpeed: 4
+  healthPoint: 4
   upgradeInfo: {fileID: 0}
