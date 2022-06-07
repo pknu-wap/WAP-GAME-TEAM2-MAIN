@@ -12,10 +12,12 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] EntityBaseInfo[] enemyPrefab;
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
+    [SerializeField] Button skillButton;
     [SerializeField] Text levelText;
     [SerializeField] Text moneyText;
-    [SerializeField] ParticleSystem[] particles;
-
+    [SerializeField] Image buildPanel;
+    [SerializeField] ParticleSystem[] skills;
+    [SerializeField] ParticleSystem touchEffect;
     private const int WAITING_TIME = 120;
     private float cntTime;
     private float remainTime;
@@ -34,6 +36,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (cntTime >= WAITING_TIME && !IsStart) StartPhase();
         if (enemyList.Count <= 0 && IsStart) EndPhase();
+
+        if(IsStart) InputEventManager.Instance.AddTouchEvent(TouchAttack);
     }
 
     public void StartPhase()
@@ -41,6 +45,8 @@ public class GameManager : MonoSingleton<GameManager>
         IsStart = true;
         remainTimeText.enabled = false;
         readyButton.gameObject.SetActive(false);
+        buildPanel.gameObject.SetActive(false);
+        skillButton.gameObject.SetActive(true);
         UpdateLevelText(++Level);
         int enemyNum = Mathf.RoundToInt(Level * 3.5f);
         for (int i = 0; i < enemyNum; i++)
@@ -55,6 +61,8 @@ public class GameManager : MonoSingleton<GameManager>
         IsStart = false;
         remainTimeText.enabled = true;
         readyButton.gameObject.SetActive(true);
+        buildPanel.gameObject.SetActive(true);
+        skillButton.gameObject.SetActive(false);
     }
     private IEnumerator NextPhaseTimer()
     {
@@ -81,14 +89,26 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void UseSkill(int index)
     {
-        ParticleSystem skill = Instantiate<ParticleSystem>(particles[index], new Vector3(0, 1, 0), Quaternion.identity);
-        StartCoroutine(SkillEffect(skill));
+        StartCoroutine(ParticleEffect(skills[index], new Vector3(0,1,0)));
     }
-    private IEnumerator SkillEffect(ParticleSystem skill)
+    private void TouchAttack(Touch touch)
     {
-        skill.Play();
-        yield return new WaitUntil(() => skill.isPlaying == false);
-        Destroy(skill.gameObject);
+        Vector3 position = FieldManager.Instance.GetWorldPosition(touch.position);
+        switch(touch.phase){
+            case TouchPhase.Began:
+                StartCoroutine(ParticleEffect(touchEffect,position));
+                break;
+            case TouchPhase.Moved:
+                StartCoroutine(ParticleEffect(touchEffect, position));
+                break;
+        }
+    }
+    private IEnumerator ParticleEffect(ParticleSystem particle, Vector3 position)
+    {
+        ParticleSystem effect = Instantiate<ParticleSystem>(particle, position, Quaternion.identity);
+        effect.Play();
+        yield return new WaitUntil(() => effect.isPlaying == false);
+        Destroy(effect.gameObject);
     }
 
     private void UpdateLevelText(int level)
