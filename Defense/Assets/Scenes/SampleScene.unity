@@ -1081,7 +1081,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 842933362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318852964}
+        m_MethodName: UseSkill
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &842933362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,8 +1480,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd8e735ee9ef1424696411d8e5085ecf, type: 2}
   remainTimeText: {fileID: 1729207122}
   readyButton: {fileID: 1701557123}
+  skillButton: {fileID: 842933361}
   levelText: {fileID: 586207105}
   moneyText: {fileID: 254654970}
+  buildPanel: {fileID: 2107769560}
+  skills: []
+  touchEffect: {fileID: 935773368046564066, guid: b1d08c6f97b1a2740ad784c4a255aa50,
+    type: 3}
 --- !u!4 &1318852965
 Transform:
   m_ObjectHideFlags: 0
@@ -1967,13 +1983,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2db5fe1c52fb1446a34714833c70226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerList: []
+  StartPos: {fileID: 924288175}
   cells: {fileID: 8505177107991890714, guid: c6a0df24238d7e341806454613fed576, type: 3}
   blueZones: {fileID: 8416288244715720495, guid: b1316fca0b3321c438b815caeeb5a3b0,
     type: 3}
   redZones: {fileID: 6433954702699610244, guid: 8109f060d62231247a7caea20ed5053d,
     type: 3}
-  startPos: {fileID: 924288175}
   endPos: {fileID: 938104386}
   cellSize: 0
 --- !u!4 &1724743962

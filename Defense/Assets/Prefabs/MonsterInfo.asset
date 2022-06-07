@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 10
   range: 1
   postAttackDelay: 1
-  preAttackDelay: 0
+  preAttackDelay: 2
   movementSpeed: 4
   healthPoint: 4
   upgradeInfo: {fileID: 0}
