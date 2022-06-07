@@ -37,7 +37,7 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     }
 
     // TODO: determine is on work or not form PhaseManager
-    private bool IsWorkable { get => PhaseManager.Instance.IsStart; }
+    private bool IsWorkable { get => GameManager.Instance.IsStart; }
 
     private void OnEnable()
     {

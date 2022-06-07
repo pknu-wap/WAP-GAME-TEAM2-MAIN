@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhaseManager : MonoSingleton<PhaseManager>
+public class GameManager : MonoSingleton<GameManager>
 {
     public int Level { get; private set; }
     public bool IsStart { get; private set; }
@@ -14,6 +14,7 @@ public class PhaseManager : MonoSingleton<PhaseManager>
     [SerializeField] Button readyButton;
     [SerializeField] Text levelText;
     [SerializeField] Text moneyText;
+    [SerializeField] ParticleSystem[] particles;
 
     private const int WAITING_TIME = 120;
     private float cntTime;
@@ -77,6 +78,17 @@ public class PhaseManager : MonoSingleton<PhaseManager>
         {
             enemyList.Add(enemy);
         }
+    }
+    public void UseSkill(int index)
+    {
+        ParticleSystem skill = Instantiate<ParticleSystem>(particles[index], new Vector3(0, 1, 0), Quaternion.identity);
+        StartCoroutine(SkillEffect(skill));
+    }
+    private IEnumerator SkillEffect(ParticleSystem skill)
+    {
+        skill.Play();
+        yield return new WaitUntil(() => skill.isPlaying == false);
+        Destroy(skill.gameObject);
     }
 
     private void UpdateLevelText(int level)
