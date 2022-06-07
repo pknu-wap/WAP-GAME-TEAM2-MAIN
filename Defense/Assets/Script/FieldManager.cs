@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FieldManager : MonoSingleton<FieldManager>
 {
-    public List<GameObject> towerList = new List<GameObject>();
+    public List<Tower> towerList { get; private set; } = new List<Tower>();
+    public Transform StartPos;
 
     [SerializeField] GameObject cells;//기본 셀 프리팹
     [SerializeField] GameObject blueZones;//블루존 프리팹
     [SerializeField] GameObject redZones;//레드존 프리팹
 
-    [SerializeField] Transform startPos; // 필드 시작 포지션
     [SerializeField] Transform endPos; // 필드 끝 포지션
     //필드의 크기를 얻기위해 두 포지션을 씬에 배치해놨음
 
@@ -29,8 +29,8 @@ public class FieldManager : MonoSingleton<FieldManager>
 
     void Start()
     {
-        width = (int)(endPos.position.x - startPos.position.x);
-        height = (int)(endPos.position.z - startPos.position.z);
+        width = (int)(endPos.position.x - StartPos.position.x);
+        height = (int)(endPos.position.z - StartPos.position.z);
         cellSize = 4;
         gridArray = new int[width, height];
         CreateField(cellSize);
@@ -48,8 +48,8 @@ public class FieldManager : MonoSingleton<FieldManager>
     }
     private void CreateCell(Vector3 position)
     {
-        if ((position.x > startPos.position.x && position.x < endPos.position.x)
-            || (position.z > startPos.position.z && position.z < startPos.position.z))
+        if ((position.x > StartPos.position.x && position.x < endPos.position.x)
+            || (position.z > StartPos.position.z && position.z < StartPos.position.z))
         {
             //*****if문에 조건을 추가해 맵 중앙 지켜야될 구조물에 겹쳐서 생기지 않게 한다.
 
@@ -87,19 +87,20 @@ public class FieldManager : MonoSingleton<FieldManager>
         float m_ZCoord = Camera.main.WorldToScreenPoint(transform.position).z;
         Vector3 touchPos = new Vector3(touch.x, touch.y, m_ZCoord);
 
-        touchPos = Camera.main.ScreenToWorldPoint(touchPos) - startPos.position;
+        touchPos = Camera.main.ScreenToWorldPoint(touchPos);
         touchPos.y = 0;
-        return GetGridPosition(touchPos);
+        return touchPos;
     }
-    private Vector3 GetGridPosition(Vector3 position)
+    public Vector3 GetGridPosition(Vector3 position)
     {
         int gridX = (int)(position.x / cellSize) * cellSize;
         int gridZ = (int)(position.z / cellSize) * cellSize;
 
-        return new Vector3(gridX, 1, gridZ) + startPos.position;
+        return new Vector3(gridX, 1, gridZ) + StartPos.position;
     }
-    private Vector3 GetCellPosition(int x, int z)
+    public void AddTowerList(Tower tower)
     {
-        return startPos.position + new Vector3(x, 0, z) * cellSize;
+        if (towerList != null && towerList.Contains(tower)) return;
+        towerList.Add(tower);
     }
 }

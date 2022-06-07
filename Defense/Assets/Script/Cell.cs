@@ -9,7 +9,7 @@ public class Cell : MonoBehaviour
     private VirtualEntity turret;
     public enum State
     {
-        DEFAULT,BUILDABLE, UNBUILDABLE, INSTALLED
+        DEFAULT,BUILDABLE, UNBUILDABLE
     }
     public State CellState;
     private void Start()
@@ -30,9 +30,6 @@ public class Cell : MonoBehaviour
             case State.UNBUILDABLE:
                 color = Color.red;
                 color.a = 0.4f;
-                break;
-            case State.INSTALLED:
-                color = cellOrigin;
                 break;
             case State.DEFAULT:
                 color = cellOrigin;

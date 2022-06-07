@@ -12,10 +12,8 @@ public class BuildManager : MonoSingleton<BuildManager>
     public void BuildToTower()
     {
         IsTouch = false;
-        if (tower == null) return;
-        tower.isFixed = true;
+        if (tower == null) return;  
         tower.SetTurret();
-        FieldManager.Instance.towerList.Add(tower.gameObject);
         tower = null;
     }
 
@@ -23,7 +21,9 @@ public class BuildManager : MonoSingleton<BuildManager>
     {
         IsTouch = true;
         Touch touch = Input.GetTouch(0);
+        Vector3 offset = FieldManager.Instance.StartPos.position;
         Vector3 towerPosition = FieldManager.Instance.GetWorldPosition(touch.position);
+        towerPosition = FieldManager.Instance.GetGridPosition(towerPosition - offset);
         tower = Instantiate<VirtualEntity>(towerPrefabs[turretNum],towerPosition, Quaternion.identity);
         tower.SetVirtualTurret();
     }

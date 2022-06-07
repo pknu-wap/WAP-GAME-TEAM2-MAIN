@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class VirtualEntity : MonoBehaviour
 {
-    public bool isFixed;
-    private void Start()
-    {
-        isFixed = false;
-    }
     private void Update()
     {
-        if (!BuildManager.Instance.IsTouch || isFixed) return;
+        if (!BuildManager.Instance.IsTouch) return;
+
         InputEventManager.Instance.AddTouchEvent(MoveToTouch);
-        
     }
     private void MoveToTouch(Touch touch)
     {
+        Vector3 offset = FieldManager.Instance.StartPos.position;
         Vector3 position = FieldManager.Instance.GetWorldPosition(touch.position);
+        position = FieldManager.Instance.GetGridPosition(position - offset);
 
-        position.y = GetComponentInChildren<BoxCollider>().size.y;
         transform.position = position;
     }
     private void OnTriggerEnter(Collider other)
@@ -51,18 +47,22 @@ public class VirtualEntity : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!isFixed) return;
-
         Cell cell = other.GetComponent<Cell>();
-        if (cell != null) {
-            if(cell.CellState == Cell.State.BUILDABLE)
+        if (!BuildManager.Instance.IsTouch && cell != null) {
+            if (cell.CellState == Cell.State.BUILDABLE)
             {
                 cell.CellState = Cell.State.UNBUILDABLE;
+                cell.UpdateCellColor(Cell.State.DEFAULT);
                 InputEventManager.Instance.RemoveTouchEvent(MoveToTouch);
+                FieldManager.Instance.AddTowerList(gameObject.GetComponent<Tower>());
                 Destroy(this);
             }
-            else Destroy(gameObject);
-        cell.UpdateCellColor(Cell.State.DEFAULT);
+            else
+            {
+                cell.UpdateCellColor(Cell.State.DEFAULT);
+                Destroy(gameObject);
+            }
+
         }
     }
     public void SetTurret()
