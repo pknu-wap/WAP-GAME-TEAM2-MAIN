@@ -53,13 +53,13 @@ public class VirtualEntity : MonoBehaviour
             {
                 cell.CellState = Cell.State.UNBUILDABLE;
                 cell.UpdateCellColor(Cell.State.DEFAULT);
-                InputEventManager.Instance.RemoveTouchEvent(MoveToTouch);
                 FieldManager.Instance.AddTowerList(gameObject.GetComponent<Tower>());
                 Destroy(this);
             }
             else
             {
                 cell.UpdateCellColor(Cell.State.DEFAULT);
+                FieldManager.Instance.RemoveTowerList(gameObject.GetComponent<Tower>());
                 Destroy(gameObject);
             }
 
@@ -88,5 +88,9 @@ public class VirtualEntity : MonoBehaviour
         GetComponent<AttackProjectile>().enabled = false;
         GetComponentInChildren<Collider>().isTrigger = true;
         GetComponentInChildren<MeshRenderer>().material.color = color;
+    }
+    private void OnDestroy()
+    {
+        InputEventManager.Instance.RemoveTouchEvent(MoveToTouch);
     }
 }

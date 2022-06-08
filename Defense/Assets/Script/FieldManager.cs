@@ -69,9 +69,9 @@ public class FieldManager : MonoSingleton<FieldManager>
                 cntRed++;
                 return;
             }
-        GameObject cell = Instantiate(cells, pos, Quaternion.identity) ;//기본 그리드
-        cell.transform.localScale *= cellSize ;
-        DrawLine(position);
+            GameObject cell = Instantiate(cells, pos, Quaternion.identity);//기본 그리드
+            cell.transform.localScale *= cellSize;
+            DrawLine(position);
         }
     }
     private void DrawLine(Vector3 position)
@@ -102,5 +102,12 @@ public class FieldManager : MonoSingleton<FieldManager>
     {
         if (towerList != null && towerList.Contains(tower)) return;
         towerList.Add(tower);
+        Debug.Log(towerList.Count);
+    }
+    public void RemoveTowerList(Tower tower)
+    {
+        if (towerList != null && !towerList.Contains(tower)) return;
+        towerList.Remove(tower);
+        Debug.Log("타워 제거됨");
     }
 }
