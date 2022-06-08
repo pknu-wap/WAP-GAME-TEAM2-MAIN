@@ -16,7 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] Text levelText;
     [SerializeField] Text moneyText;
     [SerializeField] Image buildPanel;
-    [SerializeField] ParticleSystem[] skills;
+    [SerializeField] APlayerSkill[] skills;
     [SerializeField] ParticleSystem touchEffect;
     private const int WAITING_TIME = 120;
     private float cntTime;
@@ -72,7 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             cntTime = Time.time;
             remainTime = (int)(WAITING_TIME - cntTime);
-            remainTimeText.text = "다음 페이즈 : " + remainTime;
+            remainTimeText.text = remainTime+ "";
             yield return null;
         }
     }
@@ -89,7 +89,9 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void UseSkill(int index)
     {
-        StartCoroutine(ParticleEffect(skills[index], new Vector3(0,1,0)));
+        APlayerSkill skill = Instantiate<APlayerSkill>(skills[index]);
+        skill.Use();
+        StartCoroutine(skill.DelayTime(skillButton));
     }
     private void TouchAttack(Touch touch)
     {

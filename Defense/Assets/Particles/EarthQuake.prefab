@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6850458511858570315}
   - component: {fileID: 6850458511858570312}
   - component: {fileID: 6850458511858570313}
+  - component: {fileID: 4546350448537389046}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: EarthQuake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4717,3 +4718,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4546350448537389046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850458511858570318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40265c6127a79e945aa79f71d31e93f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 6850458511858570312}
