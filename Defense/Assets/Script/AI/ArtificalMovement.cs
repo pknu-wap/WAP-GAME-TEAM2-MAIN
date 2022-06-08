@@ -19,6 +19,7 @@ public class ArtificalMovement : MonoBehaviour
         get => currentMoveSpeed;
         set => currentMoveSpeed = value;
     }
+    public float stoppingDistance { get => navMeshAgent.stoppingDistance; }
 
     private void Awake()
     {
