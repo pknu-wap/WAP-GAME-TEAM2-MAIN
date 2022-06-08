@@ -36,8 +36,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (cntTime >= WAITING_TIME && !IsStart) StartPhase();
         if (enemyList.Count <= 0 && IsStart) EndPhase();
-
-        if(IsStart) InputEventManager.Instance.AddTouchEvent(TouchAttack);
     }
 
     public void StartPhase()
@@ -93,19 +91,7 @@ public class GameManager : MonoSingleton<GameManager>
         skill.Use();
         StartCoroutine(skill.DelayTime(skillButton));
     }
-    private void TouchAttack(Touch touch)
-    {
-        Vector3 position = FieldManager.Instance.GetWorldPosition(touch.position);
-        switch(touch.phase){
-            case TouchPhase.Began:
-                StartCoroutine(ParticleEffect(touchEffect,position));
-                break;
-            case TouchPhase.Moved:
-                StartCoroutine(ParticleEffect(touchEffect, position));
-                break;
-        }
-    }
-    private IEnumerator ParticleEffect(ParticleSystem particle, Vector3 position)
+    public IEnumerator ParticleEffect(ParticleSystem particle, Vector3 position)
     {
         ParticleSystem effect = Instantiate<ParticleSystem>(particle, position, Quaternion.identity);
         effect.Play();

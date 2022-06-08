@@ -88,7 +88,7 @@ public class FieldManager : MonoSingleton<FieldManager>
         Vector3 touchPos = new Vector3(touch.x, touch.y, m_ZCoord);
 
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
-        touchPos.y = 0;
+        touchPos.y = 1;
         return touchPos;
     }
     public Vector3 GetGridPosition(Vector3 position)
