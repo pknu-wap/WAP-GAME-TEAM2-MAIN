@@ -18,7 +18,6 @@ public class BuildManager : MonoSingleton<BuildManager>
             tower.SetTurret();
             tower = null;
         }
-        Debug.Log(FieldManager.Instance.towerList.Count);
     }
 
     public void SelectTurret(int turretNum)

@@ -21,7 +21,6 @@ public class Monster : MonoBehaviour
         movementComponent = GetComponent<ArtificalMovement>();
         StartCoroutine(Combat());
     }
-
     private IEnumerator Combat()
     {
         var towerList = FieldManager.Instance.towerList;

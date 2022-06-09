@@ -69,9 +69,9 @@ public class VirtualEntity : MonoBehaviour
     {
         Color color = GetComponentInChildren<MeshRenderer>().material.color;
         color.a = 1f;
-        GetComponent<Tower>().enabled = true;
+       /* GetComponent<Tower>().enabled = true;
         GetComponent<EntityHealth>().enabled = true;
-        GetComponent<AttackProjectile>().enabled = true;
+        GetComponent<AttackProjectile>().enabled = true;*/
         GetComponentInChildren<Collider>().isTrigger = false;
         GetComponentInChildren<MeshRenderer>().material.color = color;
 
@@ -83,9 +83,9 @@ public class VirtualEntity : MonoBehaviour
     {
         Color color = GetComponentInChildren<MeshRenderer>().material.color;
         color.a = 0.4f;
-        GetComponent<Tower>().enabled = false;
+       /* GetComponent<Tower>().enabled = false;
         GetComponent<EntityHealth>().enabled = false;
-        GetComponent<AttackProjectile>().enabled = false;
+        GetComponent<AttackProjectile>().enabled = false;*/
         GetComponentInChildren<Collider>().isTrigger = true;
         GetComponentInChildren<MeshRenderer>().material.color = color;
     }

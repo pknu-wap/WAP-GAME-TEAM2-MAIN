@@ -9,6 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public bool IsStart { get; private set; }
     public int Money { get; private set; }
 
+    [SerializeField] Tower core;
     [SerializeField] EntityBaseInfo[] enemyPrefab;
     [SerializeField] Text remainTimeText;
     [SerializeField] Button readyButton;
@@ -24,6 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
     private List<EntityBaseInfo> enemyList;
     void Start()
     {
+        FieldManager.Instance.AddTowerList(core);
         IsStart = false;
         Level = 0;
         cntTime = 0;
@@ -37,7 +39,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (cntTime >= WAITING_TIME && !IsStart) StartPhase();
         if (enemyList.Count <= 0 && IsStart) EndPhase();
-        Debug.Log(FieldManager.Instance.towerList.Count);
     }
 
     public void StartPhase()
