@@ -15,7 +15,7 @@ MonoBehaviour:
   entityPrefab: {fileID: 8460884758712178831, guid: ad2e10ec1b00e3c498e95190f6249622,
     type: 3}
   damage: 10
-  range: 1
+  range: 5
   postAttackDelay: 1
   preAttackDelay: 2
   movementSpeed: 4

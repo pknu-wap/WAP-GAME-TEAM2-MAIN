@@ -38,7 +38,7 @@ public class ObjectPoolAdmin : MonoSingleton<ObjectPoolAdmin>
         var originPrefab = pooledObj.OriginPrefab;
         if(originPrefab == null || poolDictionaryByPrefab.ContainsKey(originPrefab) == false)
         {
-            Debug.LogWarning("there is pooled obj without pool prefab name "+originPrefab.name);
+            Debug.LogWarning("there is pooled obj without pool prefab name ");
             return false;
         }
 

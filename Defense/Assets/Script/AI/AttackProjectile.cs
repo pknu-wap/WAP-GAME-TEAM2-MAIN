@@ -7,7 +7,7 @@ public class AttackProjectile : AAttackBehaviour
     [SerializeField]
     private GameObject projectilePrefab;
     [SerializeField]
-    private float projectileSpeedPerSec = 10f;
+    private float projectileSpeedPerSec = 1000f;
 
 
     override protected void Attack(GameObject target)

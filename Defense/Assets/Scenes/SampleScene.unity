@@ -594,7 +594,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 911062071}
-          m_MethodName: SelectTurret
+          m_MethodName: SelectTower
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectNode: {fileID: 0}
   towerPrefabs:
-  - {fileID: 5488061088734213412, guid: a3be0718f418ffa41b1c549651d6bf2c, type: 3}
+  - {fileID: 7934164448537024460, guid: a3be0718f418ffa41b1c549651d6bf2c, type: 3}
 --- !u!4 &911062072
 Transform:
   m_ObjectHideFlags: 0
@@ -1174,7 +1174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &924288175 stripped
 Transform:
@@ -1497,9 +1497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702058a32c319d44e947d3bee9a293b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longAttackPrefab: {fileID: 7923782283667994908, guid: 0b3fefcfffa359941b367d940336fc69,
+  longTouch: {fileID: 7923782283667994908, guid: 0b3fefcfffa359941b367d940336fc69,
     type: 3}
-  shortEffect: {fileID: 935773368046564066, guid: b1d08c6f97b1a2740ad784c4a255aa50,
+  shortTouch: {fileID: 935773368046564066, guid: b1d08c6f97b1a2740ad784c4a255aa50,
     type: 3}
 --- !u!1 &1362528328
 GameObject:
@@ -1694,7 +1694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585211875
 GameObject:
@@ -1821,7 +1821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1701557121
 GameObject:
@@ -2189,40 +2189,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107769557}
   m_CullTransparentMesh: 0
---- !u!1 &1367997343554349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911808600779027214, guid: e828c8b716aa3b64a8dc6c7de06d58af,
-    type: 3}
-  m_PrefabInstance: {fileID: 910775203504793635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1367997343554350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8955178891253535414, guid: e828c8b716aa3b64a8dc6c7de06d58af,
     type: 3}
   m_PrefabInstance: {fileID: 910775203504793635}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367997343554349}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4092b8d87a4b32b488353d1b46a814da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &1367997343554354
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367997343554349}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &910775203504793635
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TouchAttack : MonoBehaviour
 {
-    [SerializeField] GameObject longAttackPrefab;
-    [SerializeField] ParticleSystem shortEffect;
+    [SerializeField] GameObject longTouch;
+    [SerializeField] ParticleSystem shortTouch;
     private GameObject attackPoint;
     private float touchTime;
     void Update()
@@ -19,26 +19,23 @@ public class TouchAttack : MonoBehaviour
         {
             case TouchPhase.Began:
                 touchTime = 0; 
-                attackPoint = Instantiate(longAttackPrefab, position, Quaternion.identity);
+                attackPoint = Instantiate(longTouch, position, Quaternion.identity);
                 
 ;                break;
             case TouchPhase.Moved:
                 touchTime += Time.deltaTime;
-                if (touchTime > 0.05f) LongAttack(position);
+                if (touchTime > 0.05f) attackPoint.GetComponent<LongTouch>().MoveToTouch(position);
                 break;
 
             case TouchPhase.Ended:
-                if (touchTime <= 0.05f) ShortAttack(position);
+                if (touchTime <= 0.05f)
+                {
+                    StartCoroutine(GameManager.Instance.ParticleEffect(shortTouch, position));
+                }
+                Destroy(attackPoint, 1);
                 break;
 
         }
     }
-    private void LongAttack(Vector3 position)
-    {
-        attackPoint.transform.position = position;
-    }
-    private void ShortAttack(Vector3 position)
-    {
-        StartCoroutine(GameManager.Instance.ParticleEffect(shortEffect, position));
-    }
+
 }
