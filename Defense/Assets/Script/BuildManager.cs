@@ -11,14 +11,19 @@ public class BuildManager : MonoSingleton<BuildManager>
     public bool IsTouch { get; private set; } = false;
     public void BuildToTower()
     {
-        IsTouch = false;
-        if (tower == null) return;  
-        tower.SetTurret();
-        tower = null;
+        if (IsTouch)
+        {
+            IsTouch = false;
+            if (tower == null) return;
+            tower.SetTurret();
+            tower = null;
+        }
     }
 
     public void SelectTurret(int turretNum)
     {
+        //임시 가격
+        if (!GameManager.Instance.CheckPurchase(100)) return;
         IsTouch = true;
         Touch touch = Input.GetTouch(0);
         Vector3 offset = FieldManager.Instance.StartPos.position;
