@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PriorityQueueByDistance : MonoBehaviour
+public class PriorityQueueByDistance
 {
     struct LocationDatas
     {
