@@ -54,7 +54,7 @@ public class FieldManager : MonoSingleton<FieldManager>
             //*****if문에 조건을 추가해 맵 중앙 지켜야될 구조물에 겹쳐서 생기지 않게 한다.
 
             int random = Random.Range(0, 300);//1~300범위의 랜덤수 
-            Vector3 pos = new Vector3(position.x, cellSize, position.z);
+            Vector3 pos = new Vector3(position.x, 0.2f, position.z);
             if ((90 < random && random <= 95) && cntBlue < MAXBLUE)
             {
                 GameObject blueZone = Instantiate(blueZones, pos, Quaternion.identity);
@@ -88,7 +88,7 @@ public class FieldManager : MonoSingleton<FieldManager>
         Vector3 touchPos = new Vector3(touch.x, touch.y, m_ZCoord);
 
         touchPos = Camera.main.ScreenToWorldPoint(touchPos);
-        touchPos.y = 1;
+        touchPos.y = cellSize;
         return touchPos;
     }
     public Vector3 GetGridPosition(Vector3 position)
@@ -96,13 +96,12 @@ public class FieldManager : MonoSingleton<FieldManager>
         int gridX = (int)(position.x / cellSize) * cellSize;
         int gridZ = (int)(position.z / cellSize) * cellSize;
 
-        return new Vector3(gridX, 1, gridZ) + StartPos.position;
+        return new Vector3(gridX, cellSize, gridZ) + StartPos.position;
     }
     public void AddTowerList(Tower tower)
     {
         if (towerList != null && towerList.Contains(tower)) return;
         towerList.Add(tower);
-        Debug.Log(towerList.Count);
     }
     public void RemoveTowerList(Tower tower)
     {

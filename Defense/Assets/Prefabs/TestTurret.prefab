@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c2088d9ecf0654b8e20743642af4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1824979432540882382, guid: 5767b96994f696345a272c1ffb4b5f98,
+    type: 3}
   projectileSpeedPerSec: 10
 --- !u!114 &7346388678413774604
 MonoBehaviour:
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4092b8d87a4b32b488353d1b46a814da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySearchingTerm: 0
+  enemySearchingTerm: 1
 --- !u!114 &5488061088734213412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d373b0486109df84eba1515812d097b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFixed: 0
 --- !u!54 &3857470424524613760
 Rigidbody:
   m_ObjectHideFlags: 0

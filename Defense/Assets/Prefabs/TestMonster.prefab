@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667899b79b343413583a5c799e19a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originMoveSpeed: 0
-  originStopDistanceFromDest: 0
+  originMoveSpeed: 4
+  originStopDistanceFromDest: 0.1
 --- !u!114 &2850982210709994994
 MonoBehaviour:
   m_ObjectHideFlags: 0
