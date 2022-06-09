@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour
         {
             distanceQueue.Clear();
             for (int i = 0; i < towerList.Count; i++)
-                if (towerList[i] != null) distanceQueue.Enqueue(towerList[i].transform);
+                if (towerList[i] != null && towerList[i].gameObject.activeSelf) distanceQueue.Enqueue(towerList[i].transform);
 
             GameObject closestEnemy =  distanceQueue.Count > 0 ? distanceQueue.Dequeue().gameObject : null;
             if (closestEnemy != null)
