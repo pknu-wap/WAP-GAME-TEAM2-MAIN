@@ -49,7 +49,7 @@ public class VirtualEntity : MonoBehaviour
     {
         Cell cell = other.GetComponent<Cell>();
         if (!BuildManager.Instance.IsTouch && cell != null) {
-            if (cell.CellState == Cell.State.BUILDABLE)
+            if (cell.CellState != Cell.State.UNBUILDABLE)
             {
                 cell.CellState = Cell.State.UNBUILDABLE;
                 cell.UpdateCellColor(Cell.State.DEFAULT);

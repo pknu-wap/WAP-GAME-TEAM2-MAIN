@@ -28,6 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
         Level = 0;
         cntTime = 0;
         enemyList = new List<EntityBaseInfo>();
+        Money = 1000;
         UpdateLevelText(Level);
         StartCoroutine(NextPhaseTimer());
     }
@@ -109,5 +110,17 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Money += money;
         moneyText.text = "Money\n" + Money;
+    }
+    public bool CheckPurchase(int price)
+    {
+        if (price > Money)
+        {
+            Debug.Log("금액부족");
+            return false;
+        }
+        Money -= price;
+        Debug.Log("구입완료");
+        return true;
+        
     }
 }
