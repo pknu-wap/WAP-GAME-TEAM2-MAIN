@@ -37,7 +37,7 @@ public class Monster : MonoBehaviour
             {
                 var distanceToEnemy = (transform.position - closestEnemy.transform.position).magnitude;
 
-                if (distanceToEnemy > movementComponent.stoppingDistance) movementComponent.MoveTo(closestEnemy.transform);
+                if (distanceToEnemy > attackBehaviour.OriginRange) movementComponent.MoveTo(closestEnemy.transform);
                 else attackBehaviour.OrderAttack(closestEnemy);
             }
 
