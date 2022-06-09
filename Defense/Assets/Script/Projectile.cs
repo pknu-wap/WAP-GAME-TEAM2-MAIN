@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     private Transform startObj;
     private double damage;
     [SerializeField]
-    private float collideDistance = 1f;
+    private float collideDistance = 5f;
 
     public void Init(float speedPerSec,double damage, Transform targetObj, Transform startObj)
     {

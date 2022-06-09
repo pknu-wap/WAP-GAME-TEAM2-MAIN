@@ -65,13 +65,10 @@ public class VirtualEntity : MonoBehaviour
 
         }
     }
-    public void SetTurret()
+    public void SetTower()
     {
         Color color = GetComponentInChildren<MeshRenderer>().material.color;
         color.a = 1f;
-       /* GetComponent<Tower>().enabled = true;
-        GetComponent<EntityHealth>().enabled = true;
-        GetComponent<AttackProjectile>().enabled = true;*/
         GetComponentInChildren<Collider>().isTrigger = false;
         GetComponentInChildren<MeshRenderer>().material.color = color;
 
@@ -79,17 +76,14 @@ public class VirtualEntity : MonoBehaviour
         GetComponent<EntityHealth>().Init(100, 100);
         GetComponent<AttackProjectile>().Init(30, 20, 1, 1);
     }
-    public void SetVirtualTurret()
+    public void SetVirtualTower()
     {
         Color color = GetComponentInChildren<MeshRenderer>().material.color;
         color.a = 0.4f;
-       /* GetComponent<Tower>().enabled = false;
-        GetComponent<EntityHealth>().enabled = false;
-        GetComponent<AttackProjectile>().enabled = false;*/
         GetComponentInChildren<Collider>().isTrigger = true;
         GetComponentInChildren<MeshRenderer>().material.color = color;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         InputEventManager.Instance.RemoveTouchEvent(MoveToTouch);
     }

@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     {
         attackBehaviour = GetComponent<AAttackBehaviour>();
         healthInfo = GetComponent<EntityHealth>();
+        healthInfo.AddEventOnDeath(FieldManager.Instance.RemoveTowerList);
         StartCoroutine(SeekEnemy());
     }
 

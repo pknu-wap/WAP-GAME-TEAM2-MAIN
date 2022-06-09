@@ -109,4 +109,11 @@ public class FieldManager : MonoSingleton<FieldManager>
         towerList.Remove(tower);
         Debug.Log("타워 제거됨");
     }
+    public void RemoveTowerList(GameObject target)
+    {
+        Tower tower = target.GetComponent<Tower>();
+        if (towerList != null && !towerList.Contains(tower)) return;
+        towerList.Remove(tower);
+        Debug.Log("타워 제거됨");
+    }
 }
