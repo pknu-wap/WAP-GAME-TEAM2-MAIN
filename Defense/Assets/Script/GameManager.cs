@@ -37,6 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (cntTime >= WAITING_TIME && !IsStart) StartPhase();
         if (enemyList.Count <= 0 && IsStart) EndPhase();
+        Debug.Log(FieldManager.Instance.towerList.Count);
     }
 
     public void StartPhase()

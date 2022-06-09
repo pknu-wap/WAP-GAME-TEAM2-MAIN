@@ -1457,6 +1457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1318852965}
   - component: {fileID: 1318852964}
+  - component: {fileID: 1318852966}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1484,7 +1485,8 @@ MonoBehaviour:
   levelText: {fileID: 586207105}
   moneyText: {fileID: 254654970}
   buildPanel: {fileID: 2107769560}
-  skills: []
+  skills:
+  - {fileID: 4546350448537389046, guid: d0712211f9b354640918d57a6e4588f1, type: 3}
   touchEffect: {fileID: 935773368046564066, guid: b1d08c6f97b1a2740ad784c4a255aa50,
     type: 3}
 --- !u!4 &1318852965
@@ -1501,6 +1503,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318852966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318852963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702058a32c319d44e947d3bee9a293b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  longAttackPrefab: {fileID: 7923782283667994908, guid: 0b3fefcfffa359941b367d940336fc69,
+    type: 3}
+  shortEffect: {fileID: 935773368046564066, guid: b1d08c6f97b1a2740ad784c4a255aa50,
+    type: 3}
 --- !u!1 &1362528328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,8 +2035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3903d83cb8daba94f832b8611468ced6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testturret: {fileID: 7934164448537024460, guid: a3be0718f418ffa41b1c549651d6bf2c,
-    type: 3}
 --- !u!1 &1729207121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,7 +2079,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -2286,10 +2302,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2976497748509667687, guid: f317e51343fc80f40a0ad7d6b79015d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2976497749691690913, guid: f317e51343fc80f40a0ad7d6b79015d0,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976497749691690913, guid: f317e51343fc80f40a0ad7d6b79015d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6863672669098609334, guid: f317e51343fc80f40a0ad7d6b79015d0,
         type: 3}
@@ -2305,6 +2331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6863672669098609334, guid: f317e51343fc80f40a0ad7d6b79015d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6865912137918600708, guid: f317e51343fc80f40a0ad7d6b79015d0,
         type: 3}
@@ -2366,10 +2397,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7834549610505642997, guid: f317e51343fc80f40a0ad7d6b79015d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7834549612276448563, guid: f317e51343fc80f40a0ad7d6b79015d0,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834549612276448563, guid: f317e51343fc80f40a0ad7d6b79015d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f317e51343fc80f40a0ad7d6b79015d0, type: 3}
