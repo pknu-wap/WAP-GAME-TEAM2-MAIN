@@ -45,7 +45,7 @@ public class EntityHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        onDeathEvent(gameObject);
+        if(onDeathEvent != null) onDeathEvent(gameObject);
         GetComponent<PooledObject>().ReturnToPool();
     }
 }
