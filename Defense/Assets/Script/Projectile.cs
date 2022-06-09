@@ -30,7 +30,10 @@ public class Projectile : MonoBehaviour
     protected virtual void OnArrive()
     {
         gameObject.SetActive(false);
-        targetObj.GetComponent<EntityHealth>().TakeDamage(damage);
-        GetComponent<PooledObject>().ReturnToPool();
+        if (targetObj.gameObject.activeSelf)
+        {
+            targetObj.GetComponent<EntityHealth>().TakeDamage(damage);
+            GetComponent<PooledObject>().ReturnToPool();
+        }
     }
 }
