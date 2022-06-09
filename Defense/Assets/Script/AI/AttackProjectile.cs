@@ -15,7 +15,11 @@ public class AttackProjectile : AAttackBehaviour
         transform.LookAt(target.transform.position);
 
         var projectile = ObjectPoolAdmin.Instance.GetPooledObject(projectilePrefab);
+<<<<<<< HEAD
         projectile.SetActive(true);
+=======
+        projectile.transform.position = transform.position;
+>>>>>>> origin/main
         projectile.GetComponent<Projectile>().Init(projectileSpeedPerSec, damage, target.transform, gameObject.transform);
     }
 }
